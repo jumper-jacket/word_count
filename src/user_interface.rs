@@ -10,8 +10,10 @@ pub fn ask_for_filename() -> io::Result<String> {
     Ok(filename.trim().to_string())
 }
 
-pub fn display_results(word_count: &HashMap<String, u32>) {
-    for (word, count) in word_count.iter() {
-        println!("{}: {}",word, count);
+pub fn display_results(word_count: HashMap<String, u32>) {
+    let mut vec: Vec<_> = word_count.into_iter().collect();
+    vec.sort_unstable_by(|a, b| b.1.cmp(&a.1));
+    for (word, count) in vec.iter() {
+        println!("{}: \t {}",word, count);
     }
 }

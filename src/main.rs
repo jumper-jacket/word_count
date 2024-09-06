@@ -9,7 +9,7 @@ fn main() -> io::Result<()> {
     let filename = ask_for_filename()?;
 
     match count_words_in_file(&filename) {
-        Ok(word_count) => display_results(&word_count),
+        Ok(word_count) => display_results(word_count),
         Err(_e) => eprintln!("Error!!!"),
     }
 
